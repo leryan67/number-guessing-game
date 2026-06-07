@@ -19,17 +19,19 @@ public class GuessingGame {
             }
             else if (num < computerGuess) {
                 guessCounter++;
-                System.out.println("Guess higher.");
+                System.out.println("Guess higher than " + num + ".");
             }
             else if (num > computerGuess) {
                 guessCounter++;
-                System.out.println("Guess lower.");
+                System.out.println("Guess lower than " + num + ".");
             }
             else {
                 guessCounter++;
-                System.out.println("Congrats! You guessed the number in " + guessCounter + " attempts!");
+                System.out.println("Congrats! You guessed the number " + num + " in " + guessCounter + " attempts!");
+                isGuessing = false;
             }
         }
+        userGuess.close();
     }
     
 }
