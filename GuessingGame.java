@@ -7,9 +7,12 @@ public class GuessingGame {
         int computerGuess = (int)(Math.random() * 100) + 1;
         Scanner userGuess = new Scanner(System.in);
         System.out.println("Number Guessing Game");
-        System.out.println("--------------------\n");
+        System.out.println("--------------------");
 
-        
+        while (isGuessing) {
+            System.out.print("Guess a number between 1-100: ");
+            int num = userGuess.nextInt();
+        }
     }
     
 }
