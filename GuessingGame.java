@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class GuessingGame {
+    private static int bestGuessCount = Integer.MAX_VALUE;
     public static void main(String[] args) {
         boolean isGuessing = true;
         int guessCounter = 0;
@@ -12,22 +13,35 @@ public class GuessingGame {
         while (isGuessing) {
             System.out.print("Guess a number between 1-100: ");
             int num = userGuess.nextInt();
+            guessCounter++;
 
             if (num < 0 || num > 100) {
-                guessCounter++;
                 System.out.println("This guess is out of the range. Guess again.");
             }
             else if (num < computerGuess) {
-                guessCounter++;
                 System.out.println("Guess higher than " + num + ".");
             }
             else if (num > computerGuess) {
-                guessCounter++;
                 System.out.println("Guess lower than " + num + ".");
             }
             else {
-                guessCounter++;
                 System.out.println("Congrats! You guessed the number " + num + " in " + guessCounter + " attempts!");
+                
+                if (bestGuessCount == Integer.MAX_VALUE) {
+                    System.out.println("Your new high score is " + guessCounter + " guesses!");
+                    bestGuessCount = guessCounter;
+                }
+                else if (guessCounter < bestGuessCount) {
+                    System.out.println("Wow, you beat your previous record of " + bestGuessCount + " guesses!");
+                    bestGuessCount = guessCounter;
+                }
+                else if (guessCounter == bestGuessCount) {
+                    System.out.println("Unfortunate! You tied your best score of " + bestGuessCount + " guesses.");
+                }
+                else {
+                    System.out.println("Nice try. Your best score so far is " + bestGuessCount + " guesses.");
+                }
+                
                 isGuessing = false;
             }
         }
